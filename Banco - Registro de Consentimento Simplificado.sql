@@ -5,9 +5,9 @@ USE 'rcs' ;
 -- Tabela para usuários
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS 'rcs'.'usuario' (
-  'idUsuario' INT NOT NULL,
+  'idUsuario' INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   'nomeUsuario' VARCHAR(45) NOT NULL,
-  'loginUsuario' VARCHAR(45) NOT NULL,
+  'emailUsuario' VARCHAR(45) NOT NULL,
   'senhaUsuario' VARCHAR(45) NOT NULL,
   PRIMARY KEY ('idUsuario'));
 
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS 'rcs'.'usuario' (
 -- Tabela de finalidades
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS 'rcs'.'finalidade' (
-  'idFinalidade' INT NOT NULL,
+  'idFinalidade' INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   'nomeFinalidade' VARCHAR(45) NOT NULL,
   'descFinalidade' VARCHAR(100) NOT NULL,
   PRIMARY KEY ('idFinalidade'));
