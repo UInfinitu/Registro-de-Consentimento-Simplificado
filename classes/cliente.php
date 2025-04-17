@@ -18,7 +18,7 @@ class Cliente extends Usuario{
 
     // Método de listagem de consentimentos
     public function listarConsentimentos() {
-        $endpointListar = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" . $this->id;
+        $endpointListar = "../api/consentimentos/listar.php?id=" . $this->id;
         $listaConsentimentos = json_decode($endpointListar);
 
         return $listaConsentimentos;
@@ -26,7 +26,7 @@ class Cliente extends Usuario{
 
     // Método para registrar novo consentimento
     public function registrarConsentimento(Finalidade $consentimento, bool $estado) {
-        $endpointRegistrar = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/registrar.php?finalidade=" . $consentimento->id . "&usuario=" . $this->id . "&estado=" . $estado;
+        $endpointRegistrar = "../api/consentimentos/registrar.php?finalidade=" . $consentimento->id . "&usuario=" . $this->id . "&estado=" . $estado;
         $registroConsentimento = json_decode($endpointRegistrar);
 
         return $registroConsentimento;
@@ -34,7 +34,7 @@ class Cliente extends Usuario{
 
     // Método para revogar um consentimento
     public function revogarConsentimento(Finalidade $consentimento) {
-        $endpointRevogar = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/revogar.php?finalidade=" . $consentimento->id . "&usuario=" . $this->id;
+        $endpointRevogar = "../api/consentimentos/revogar.php?finalidade=" . $consentimento->id . "&usuario=" . $this->id;
         $revogacaoConsentimento = json_decode($endpointRevogar);
 
         return $revogacaoConsentimento;

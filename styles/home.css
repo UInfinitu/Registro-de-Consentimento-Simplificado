@@ -1,0 +1,101 @@
+body {
+    background-color: #DFECF5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#cabecalho {
+    background-color: #233255;
+}
+
+#logo {
+    filter: brightness(6) saturate(100%);
+}
+
+#btnAcessar {
+    border-radius: 10px;
+    background-color: #233255;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    transition: background-color 0.25s;
+    min-width: 100px;
+}
+
+#btnAcessar:hover {
+    background-color: #076EA0;
+}
+
+#explicacao {
+    background-image: url(../assets/imagem-ilustrativa.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+
+#explicacaoTexto {
+    background-color: rgba(35, 50, 85, 0.9);
+}
+
+#explicacao h1,
+#explicacao p {
+    color: #FFFFFF;
+}
+
+#estatisticas {
+    background-color: #076EA0;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.estatisticas-item {
+    border-left: 4px solid #233255;
+    padding: 10px;
+}
+
+.duvida {
+    border: 1px solid #233154;
+    border-radius: 10px;
+    color: #233154;
+}
+
+#rodape {
+    background-color: #233255;
+    color: #FFFFFF;
+}
+
+#modalLogin {
+    z-index: 1050;
+}
+
+.modal-backdrop {
+    z-index: 1040;
+}
+
+.modal-header {
+    background-color: #233255;
+    color: #FFFFFF;
+}
+
+.btn-close {
+    filter: invert();
+    --bs-btn-close-opacity: 0.75;
+    --bs-btn-close-hover-opacity: 1;
+}
+
+#formLogin label {
+    color: #233154;
+}
+
+.btn {
+    background-color: #076EA0;
+    color: #FFFFFF;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #233255;
+    color: #FFFFFF;
+}
+
+.modal-content {
+    background-color: #DFECF5;
+    height: 50vh;
+}
