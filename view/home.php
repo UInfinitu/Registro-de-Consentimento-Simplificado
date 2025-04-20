@@ -6,27 +6,31 @@ session_start();
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<?php if (isset($_SESSION['error'])): ?>
-    <div class="alert alert-danger" role="alert">
-        <?php
-        echo $_SESSION['error'];
-        unset($_SESSION['error']);
-        ?>
-    </div>
-<?php endif; ?>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/icone-logo.webp" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/padrao.css">
     <link rel="stylesheet" href="../styles/home.css">
     <title>Registro de Consentimento Simplificado</title>
 </head>
 
 <body>
-    <header id="cabecalho" class="container-fluid">
+    <?php if (isset($_SESSION['error'])): ?>
+        <div id="alertaErro" class="row justify-content-center">
+            <div class="col-4 alert alert-danger row justify-content-between">
+                <?php
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+                ?>
+                <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <header class="container-fluid">
         <div class="row justify-content-around align-items-center py-2">
             <img id="logo" src="../assets/logo.png" alt="Logo da DPOnet" class="col-lg-2 col-md-3 col-sm-4">
             <button id="btnAcessar" class="col-lg-1 col-md-1 col-sm-1 h-50 p-3" data-bs-toggle="modal" data-bs-target="#modalLogin">Acessar</button>
@@ -79,7 +83,7 @@ session_start();
         </div>
     </main>
 
-    <footer id="rodape" class="container-fluid">
+    <footer class="container-fluid">
         <div class="row align-items-center p-3">
             <p class="col-12 text-center m-0">&copy; Hugo Araki Facchini - Email: hufacchini@gmail.com . Todos direitos
                 reservados</p>
@@ -102,7 +106,12 @@ session_start();
 
                         <div class="form-group m-2 mb-5">
                             <label for="inputSenhaLogin" class="fs-3">Senha</label>
-                            <input type="password" class="form-control fs-4" name="senha" required id="inputSenhaLogin">
+                            <div class="input-group">
+                                <input type="password" class="form-control fs-4" name="senha" required id="inputSenhaLogin">
+                                <a href="#" id="visualizarSenha" class="input-group-text">
+                                    <img id="imgVisualizarSenha" src="../assets/senha-oculta.webp" alt="Simbolo para mostrar que a senha está oculta">
+                                </a>
+                            </div>
                         </div>
 
                         <div class="text-center">
@@ -115,7 +124,10 @@ session_start();
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
 </body>
 
 </html>

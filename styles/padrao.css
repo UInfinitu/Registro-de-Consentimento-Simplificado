@@ -1,0 +1,18 @@
+body {
+    background-color: #DFECF5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #233255;
+}
+
+footer {
+    background-color: #233255;
+    color: #FFFFFF;
+}
+
+#imgVisualizarSenha {
+    width: 1.5em;
+    object-fit: contain;
+}

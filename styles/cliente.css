@@ -1,0 +1,52 @@
+#iconeLogo {
+    filter: brightness(100);
+    width: 5em;
+}
+
+.opcoes {
+    position: relative;
+    display: inline-block;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.opcoes::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    margin: 0 auto; /* Centraliza */
+    height: 2px;
+    background-color: #FFFFFF;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.opcoes:hover::after {
+    transform: scaleX(1);
+}
+
+#iconeUsuario {
+    width: 4em;
+}
+
+#edicaoUsuario, #meusConsentimentos {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+#imgEditarUsuario {
+    width: 1.5em;
+}
+
+#imgBusca {
+    width: 1.5em;
+}
+
+#adicionarConsentimento {
+    background-color: #076EA0;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
