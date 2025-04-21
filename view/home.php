@@ -19,7 +19,7 @@ session_start();
 
 <body>
     <?php if (isset($_SESSION['error'])): ?>
-        <div id="alertaErro" class="row justify-content-center">
+        <div id="alerta" class="row justify-content-center">
             <div class="col-4 alert alert-danger row justify-content-between">
                 <?php
                 echo $_SESSION['error'];

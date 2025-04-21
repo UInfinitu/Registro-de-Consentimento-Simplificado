@@ -66,10 +66,6 @@
     --bs-btn-close-hover-opacity: 1;
 }
 
-.btn-close:focus {
-    box-shadow: none;
-}
-
 #formLogin label {
     color: #233154;
 }
@@ -88,13 +84,4 @@
 .modal-content {
     background-color: #DFECF5;
     height: 50vh;
-}
-
-.alert {
-    --bs-alert-margin-bottom: 0;
-    position: absolute;
-}
-
-#alertaErro button {
-    filter: none;
 }

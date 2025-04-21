@@ -6,7 +6,7 @@ include "../../conexao.php";
 
 $id = htmlspecialchars($_POST["id"]);
 $nome = htmlspecialchars($_POST["nome"]);
-$descricao = htmlspecialchars($_GET["desc"]);
+$descricao = htmlspecialchars($_POST["desc"]);
 
 $sql = $pdo->prepare("UPDATE finalidade SET nomeFinalidade = :nome, descFinalidade = :descricao WHERE idFinalidade = :id");
 

@@ -24,7 +24,7 @@
     transition: transform 0.2s ease;
 }
 
-.opcoes:hover::after {
+.opcoes:hover::after, .ativo::after {
     transform: scaleX(1);
 }
 
@@ -49,4 +49,30 @@
     background-color: #076EA0;
     color: #FFFFFF;
     border-radius: 10px;
+}
+
+.gradiente {
+    background-image: linear-gradient(to right, #076EA0, #233255, #076EA0);
+    background-size: 200% 200%;
+    background-position: 25% 50%;
+    transition: background-position 0.5s ease;
+}
+
+.mudar-gradiente {
+    background-position: 75% 50%;
+}
+
+.card-text {
+    overflow: auto; /* Esconde o texto que excede o limite */
+    max-height: 5em;
+}
+
+.alteracaoBloqueada {
+    background-color: rgb(180, 180, 180);
+    cursor: not-allowed;
+}
+
+.alteracaoBloqueada:focus {
+    background-color: rgb(180, 180, 180);
+    border: 1px solid #dee2e6;
 }

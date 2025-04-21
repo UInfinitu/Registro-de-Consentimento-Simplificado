@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS rcs.usuario (
   idUsuario INT NOT NULL AUTO_INCREMENT,
   nomeUsuario VARCHAR(45) NOT NULL,
   emailUsuario VARCHAR(45) NOT NULL,
-  senhaUsuario CHAR(32) NOT NULL,
+  senhaUsuario VARCHAR(32) NOT NULL,
   PRIMARY KEY (idUsuario));
 
 -- -----------------------------------------------------
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS rcs.usuario (
 CREATE TABLE IF NOT EXISTS rcs.finalidade (
   idFinalidade INT NOT NULL AUTO_INCREMENT,
   nomeFinalidade VARCHAR(45) NOT NULL,
-  descFinalidade VARCHAR(100) NOT NULL,
+  descFinalidade VARCHAR(200) NOT NULL,
   PRIMARY KEY (idFinalidade));
 
 -- -----------------------------------------------------
@@ -40,3 +40,22 @@ CREATE TABLE IF NOT EXISTS rcs.consentimentos (
     REFERENCES rcs.finalidade (idFinalidade)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+-- -----------------------------------------------------
+-- Inserts para teste
+-- -----------------------------------------------------
+
+INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario) VALUES
+("Cleiton", "cleiton@gmail.com", "12345678"),
+("Bruno", "bruno@gmail.com", "abcdefgh");
+
+INSERT INTO finalidade (nomeFinalidade, descFinalidade) VALUES
+("Marketing por e-mail", "Consentimento para receber comunicações promocionais e newsletters por e-mail."),
+("Compartilhamento de dados com terceiros", "Consentimento para compartilhar informações do usuário com parceiros ou outras empresas para fins específicos.");
+
+INSERT INTO consentimentos (usuario_idUsuario, finalidade_idFinalidade, estado) VALUES
+(1, 1, 1),
+(1, 2, 0),
+(2, 1, 1),
+(2, 2, 1);

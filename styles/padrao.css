@@ -16,3 +16,17 @@ footer {
     width: 1.5em;
     object-fit: contain;
 }
+
+#alerta button {
+    filter: none;
+}
+
+.alert {
+    --bs-alert-margin-bottom: 0;
+    position: absolute;
+    z-index: 2;
+}
+
+.btn-close:focus, .form-control:focus {
+    box-shadow: none;
+}

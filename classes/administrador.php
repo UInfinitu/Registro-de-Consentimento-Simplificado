@@ -6,7 +6,7 @@ include "usuario.php";
 class Administrador extends Usuario {
     // Método para criação de finalidade
     public function criarFinalidade(string $nome, string $desc) {
-        $endpointCriar = "../api/finalidade-coleta/criar.php";
+        $endpointCriar = "http://localhost/Registro-de-Consentimento-Simplificado/api/finalidade-coleta/criar.php";
         $finalidade = [
             "nome" => $nome,
             "desc" => $desc
@@ -27,7 +27,7 @@ class Administrador extends Usuario {
 
     // Método para modificar uma finalidade
     public function modificarFinalidade(int $id, string $novoNome, string $novaDesc) {
-        $endpointModificar = "../api/finalidade-coleta/modificar.php?id=" . $id;
+        $endpointModificar = "http://localhost/Registro-de-Consentimento-Simplificado/api/finalidade-coleta/modificar.php?id=" . $id;
         $finalidade = [
             "nome" => $novoNome,
             "desc" => $novaDesc
@@ -48,7 +48,7 @@ class Administrador extends Usuario {
 
     // Método para remover finalidade
     public function removerFinalidade(int $id) {
-        $endpointRemover = "../api/finalidade-coleta/remover.php?id=" . $id;
+        $endpointRemover = "http://localhost/Registro-de-Consentimento-Simplificado/api/finalidade-coleta/remover.php?id=" . $id;
         $remocaoFinalidade = json_decode($endpointRemover);
 
         return $remocaoFinalidade;
@@ -56,7 +56,7 @@ class Administrador extends Usuario {
 
     // Método para listar todos os usuários
     public function listarClientes() {
-        $endpointListarClientes = "../api/clientes/listar.php";
+        $endpointListarClientes = "http://localhost/Registro-de-Consentimento-Simplificado/api/clientes/listar.php";
         $listaClientes = json_decode($endpointListarClientes);
 
         return $listaClientes;
@@ -64,7 +64,7 @@ class Administrador extends Usuario {
 
     // Método para verificar todos os consentimentos de todos os usuários
     public function consentimentoUsuarios() {
-        $endpointListar = "../api/consentimentos/listar.php";
+        $endpointListar = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php";
         $listaConsentimentos = json_decode($endpointListar);
 
         return $listaConsentimentos;
