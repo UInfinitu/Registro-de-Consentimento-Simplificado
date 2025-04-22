@@ -5,23 +5,7 @@ session_start();
 include "../classes/cliente.php";
 include "../conexao.php";
 
-$endpoint = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" . $_SESSION['id'];
-$consentimentos = json_decode(file_get_contents($endpoint));
-$consentimentosFiltrados = [];
-
 $usuario = new Cliente($_SESSION['id'], $_SESSION["nome"]);
-
-if ($_SESSION['ordem'] == 'crescente') {
-    $consentimentosFiltrados = $consentimentos->crescente;
-} else if ($_SESSION['ordem'] == 'decrescente') {
-    $consentimentosFiltrados = $consentimentos->decrescente;
-} else if ($_SESSION['ordem'] == 'maior_taxa') {
-    $consentimentosFiltrados = $consentimentos->maior_taxa;
-} else if ($_SESSION['ordem'] == 'menor_taxa') {
-    $consentimentosFiltrados = $consentimentos->menor_taxa;
-} else {
-    $consentimentosFiltrados = $consentimentos->crescente; // Valor padrão
-}
 
 ?>
 
@@ -124,20 +108,47 @@ if ($_SESSION['ordem'] == 'crescente') {
             </div>
 
             <div id="consentimentos" class="row gy-3 justify-content-center">
-                <div id="adicionarConsentimento" class="col-2 d-flex justify-content-center align-items-center mx-1">
-                    <p>+</p>
-                </div>
+                <!-- Onde o JS vai gerar os consentimentos -->
+            </div>
+        </div>
 
-                <?php foreach ($consentimentosFiltrados as $consentimento) { ?>
-                    <div class="card col-3 mx-1 d-flex flex-column">
-                        <div class="card-body d-flex flex-column justify-content-between">
-                            <h5 class="card-title mb-2"><?= $consentimento->nomeFinalidade ?></h5>
-                            <p class="card-text flex-grow-1 d-flex justify-content-center mt-auto"><?= $consentimento->descFinalidade ?></p>
-                            <a href="#" class="mt-auto">Revogar</a>
+        <!-- Modal para adicionar novo consentimento -->
+        <div id="modalAdcConsentimento" class="modal fade surgirBaixo" tabindex="-1" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAdicionarLabel">Adicionar Consentimentos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+
+                    <div class="modal-body container-fluid align-items-center">
+                        <!-- <div id="altaTaxaConsentimento" class="row mb-5 p-2">
+                            <h5>Alta Taxa de Consentimento</h5>
+                            <div class="col-12">
+                                lista consentimentos
+                            </div>
+                        </div>
+
+                        <div id="adicionadosRecentemente" class="row mb-5 p-2">
+                            <h5>Adicionados Recentemente</h5>
+                            <div class="col-12">
+                                lista consentimentos
+                            </div>
+                        </div>
+
+                        <div id="revogados" class="row mb-5 p-2">
+                            <h5>Revogados</h5>
+                            <div class="col-12">
+                                lista consentimentos
+                            </div>
+                        </div> -->
+
+                        <div id="todasFinalidades" class="row text-center p-3">
+                            <h5 class="col-12">Todas Finalidades</h5>
+                            lista consentimentos
                         </div>
                     </div>
-                <?php } ?>
-
+                </div>
             </div>
         </div>
 

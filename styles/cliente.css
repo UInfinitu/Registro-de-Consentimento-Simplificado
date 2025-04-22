@@ -49,6 +49,14 @@
     background-color: #076EA0;
     color: #FFFFFF;
     border-radius: 10px;
+    text-decoration: none;
+    font-size: 72px;
+    transition: 0.2s;
+}
+
+#adicionarConsentimento:hover {
+    font-size: 80px;
+    background-color: #233255;
 }
 
 .gradiente {
@@ -75,4 +83,18 @@
 .alteracaoBloqueada:focus {
     background-color: rgb(180, 180, 180);
     border: 1px solid #dee2e6;
+}
+
+.surgirBaixo {
+    transform: translateY(100%); /* Começa fora da tela */
+    transition: transform 0.3s ease; /* Animação suave */
+}
+
+.modal.show.surgirBaixo {
+    transform: translateY(0);
+}
+
+#altaTaxaConsentimento, #adicionadosRecentemente, #revogados, #todasFinalidades {
+    background-color: #dee2e6;
+    border-radius: 10px;
 }
