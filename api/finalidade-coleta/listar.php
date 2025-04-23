@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 include "../../conexao.php";
 
 $sql = $pdo->prepare(
-        "SELECT nomeFinalidade, descFinalidade
+        "SELECT idFinalidade, nomeFinalidade, descFinalidade
         FROM finalidade
         ORDER BY nomeFinalidade;");
 

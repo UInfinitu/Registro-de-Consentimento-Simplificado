@@ -23,8 +23,8 @@ class Cliente extends Usuario{
     }
 
     // Método para registrar novo consentimento
-    public function registrarConsentimento(Finalidade $consentimento, bool $estado) {
-        $endpointRegistrar = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/registrar.php?finalidade=" . $consentimento->id . "&usuario=" . $this->id . "&estado=" . $estado;
+    public function registrarConsentimento(Finalidade $consentimento) {
+        $endpointRegistrar = "http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/registrar.php?finalidade=" . $consentimento->id . "&usuario=" . $this->id;
         $registroConsentimento = json_decode($endpointRegistrar);
 
         return $registroConsentimento;

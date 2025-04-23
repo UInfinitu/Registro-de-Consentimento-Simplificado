@@ -122,31 +122,7 @@ $usuario = new Cliente($_SESSION['id'], $_SESSION["nome"]);
                     </div>
 
                     <div class="modal-body container-fluid align-items-center">
-                        <!-- <div id="altaTaxaConsentimento" class="row mb-5 p-2">
-                            <h5>Alta Taxa de Consentimento</h5>
-                            <div class="col-12">
-                                lista consentimentos
-                            </div>
-                        </div>
-
-                        <div id="adicionadosRecentemente" class="row mb-5 p-2">
-                            <h5>Adicionados Recentemente</h5>
-                            <div class="col-12">
-                                lista consentimentos
-                            </div>
-                        </div>
-
-                        <div id="revogados" class="row mb-5 p-2">
-                            <h5>Revogados</h5>
-                            <div class="col-12">
-                                lista consentimentos
-                            </div>
-                        </div> -->
-
-                        <div id="todasFinalidades" class="row text-center p-3">
-                            <h5 class="col-12">Todas Finalidades</h5>
-                            lista consentimentos
-                        </div>
+                        <!-- Onde aparecerá todas as finalidades que o usuário não tem consentimento -->
                     </div>
                 </div>
             </div>

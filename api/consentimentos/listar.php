@@ -8,7 +8,7 @@ if (isset($_GET["id"])) { // Visualização de consentimentos de um único usuá
     $id = htmlspecialchars($_GET["id"]);
 
     $sql = $pdo->prepare(
-        "SELECT f.nomeFinalidade, f.descFinalidade, c.estado
+        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade
         FROM finalidade f
         INNER JOIN consentimentos c
             ON f.idFinalidade = c.finalidade_idFinalidade
@@ -19,10 +19,8 @@ if (isset($_GET["id"])) { // Visualização de consentimentos de um único usuá
 } else { // Visualização de consentimentos de todos os usuários
 
     $sql = $pdo->prepare(
-        "SELECT f.nomeFinalidade, f.descFinalidade, c.estado
-        FROM finalidade f
-        INNER JOIN consentimentos c
-            ON f.idFinalidade = c.finalidade_idFinalidade;"
+        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade
+        FROM finalidade f;"
     );
 }
 /* if (isset($_GET["busca"])) {
