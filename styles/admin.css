@@ -1,7 +1,6 @@
 #navbar-vertical {
     height: 100vh;
     width: 20em;
-    position: fixed;
     background-color: #076EA0;
 }
 
@@ -24,5 +23,14 @@
 }
 
 main {
-    margin-left: 30rem;
+    flex-grow: 1; 
+}
+
+#iconeUsuario {
+    width: 4em;
+}
+
+#adicionarUsuario, #adicionarFinalidade{
+    background-color: #FFFFFF;
+    border-radius: 10px;
 }

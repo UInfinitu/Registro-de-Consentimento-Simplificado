@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS rcs.usuario (
 CREATE TABLE IF NOT EXISTS rcs.finalidade (
   idFinalidade INT NOT NULL AUTO_INCREMENT,
   nomeFinalidade VARCHAR(45) NOT NULL,
-  descFinalidade VARCHAR(200) NOT NULL,
+  descFinalidade VARCHAR(500) NOT NULL,
   PRIMARY KEY (idFinalidade));
 
 -- -----------------------------------------------------

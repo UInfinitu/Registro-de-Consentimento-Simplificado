@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['idSessao'])) {
+    header("Location: home.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -34,8 +42,8 @@
                     </ul>
                 </div>
             
-                <div class="mt-auto"> <!-- Coloca no fundo da navbar -->
-                    <a class="d-flex align-items-center text-decoration-none" id="logOut" href="home.php">
+                <div class="mt-auto"> <!-- Coloca na parte de baixo da navbar -->
+                    <a class="d-flex align-items-center text-decoration-none" id="logOut" href="logout.php">
                         <img class="img-fluid me-2" src="../assets/logout.webp" alt="Logout">
                         <span class="fs-4">LogOut</span>
                     </a>
@@ -43,9 +51,23 @@
             </div>
         </nav>
 
-        <main class="flex-grow-1 p-4">
-            <h1>Conteúdo Principal</h1>
-            <p>A navbar vertical está à esquerda.</p>
+        <main class="p-4">
+            <div id="adicionar">
+                <!-- Se o cadastro for feito pela área administrativa, aparece aqui -->
+            </div>
+
+            <div class="table-responsive">
+                <table class="table w-100 mb-0 table-striped">
+                    <thead>
+                        <tr id="cabecalhos" class="text-center">
+                            <!-- Cabeçalhos -->
+                        </tr>
+                    </thead>
+                    <tbody id="corpoDados" class="text-center">
+                        <!-- Dados aqui -->
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
 

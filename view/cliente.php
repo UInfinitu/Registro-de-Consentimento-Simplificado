@@ -2,11 +2,9 @@
 header("Content-Type: text/html; charset=UTF-8");
 session_start();
 
-include "../classes/cliente.php";
-include "../conexao.php";
-
-$usuario = new Cliente($_SESSION['id'], $_SESSION["nome"]);
-
+if (!isset($_SESSION['idSessao'])) {
+    header("Location: home.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +46,7 @@ $usuario = new Cliente($_SESSION['id'], $_SESSION["nome"]);
     <header class="container-fluid mb-5">
         <div class="gradiente row justify-content-evenly align-items-center p-2">
             <a href="#" id="seusConsentimentos" class="opcoes col-3 text-center fs-4">Seus Consentimentos</a>
-            <img id="iconeLogo" class="col-3" src="../assets/icone-logo.webp" alt="Icone da logo da DPOnet">
+            <a class="col-3 text-center" href="logout.php"><img id="iconeLogo" src="../assets/icone-logo.webp" alt="Icone da logo da DPOnet"></a>
             <a href="#" id="historico" class="opcoes col-3 text-center fs-4">Histórico</a>
         </div>
     </header>
@@ -60,10 +58,10 @@ $usuario = new Cliente($_SESSION['id'], $_SESSION["nome"]);
             <img id="iconeUsuario" class="col-auto" src="../assets/user.png" alt="Icone de usuário"
                 style="max-width: 50px;">
 
-            <input type="text" id="idUsuario" name="id" value="<?= $usuario->id ?>" style="display: none;">
+            <input type="text" id="idUsuario" name="id" value="<?= $_SESSION['id'] ?>" style="display: none;">
 
             <div class="input-group col">
-                <input type="text" class="alteracaoBloqueada form-control fs-5" name="nome" id="inputNomeAlteracao" placeholder="Nome" value="<?= $usuario->nome ?>"
+                <input type="text" class="alteracaoBloqueada form-control fs-5" name="nome" id="inputNomeAlteracao" placeholder="Nome" value="<?= $_SESSION['nome'] ?>"
                     required readonly>
                 <a href="#" class="editarUsuario input-group-text">
                     <img id="imgEditarUsuario" src="../assets/editar.png" alt="Simbolo para edição de usuário">

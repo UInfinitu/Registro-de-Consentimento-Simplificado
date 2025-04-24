@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 include "../../conexao.php";
 
 $nome = htmlspecialchars($_POST["nome"]);
-$descricao = htmlspecialchars($_GET["desc"]);
+$descricao = htmlspecialchars($_POST["desc"]);
 
 $sql = $pdo->prepare("INSERT INTO finalidade (nomeFinalidade, descFinalidade) VALUES (:nome, :descricao);");
 

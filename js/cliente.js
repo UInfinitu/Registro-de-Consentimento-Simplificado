@@ -31,7 +31,7 @@ historico.addEventListener('click', () => {
                     </tr>
                 </thead>
                 <tbody id="corpoHistorico">
-                    <!-- Seu conteúdo aqui -->
+                    <!-- Dados aqui -->
                 </tbody>
             </table>
         </div>

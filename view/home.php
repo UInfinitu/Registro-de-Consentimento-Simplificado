@@ -40,14 +40,11 @@ session_start();
         <div id="explicacao" class="row align-items-center">
             <div id="explicacaoTexto" class="col-12 p-5">
                 <h1 class="fs-1 fw-bold text-center">Registro de Consentimento Simplificado</h1>
-                <p class="lh-sm p-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quia fugit
-                    temporibus officiis veniam magni quis aliquam similique nostrum, dolorum mollitia ad quasi quas.
-                    Incidunt ea aliquid aut ut dicta. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
-                    qui culpa ab libero consequuntur alias corporis soluta quos at autem similique laudantium, modi, quo
-                    assumenda maxime sit expedita vero neque? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eos minima enim voluptates reprehenderit doloremque necessitatibus nisi provident aliquam, illum
-                    accusantium possimus, architecto corrupti nobis perspiciatis quae adipisci consequuntur omnis
-                    officiis.</p>
+                <p class="lh-sm p-4 text-center">
+                    Essa é uma ferramenta que visa simplificar o processo de registro e gerenciamento de consentimentos
+                    dos usuários para diferentes finalidades de coleta de dados. Ela atuará como um sistema centralizado
+                    e transparente para registrar as escolhas dos usuários em relação ao tratamento de seus dados.
+                </p>
             </div>
         </div>
 
@@ -70,15 +67,21 @@ session_start();
             class="row col-lg-9 col-md-10 col-sm-11 mx-auto align-items-stretch justify-content-between my-5">
             <div class="duvida col-lg-5 col-md-5 col-sm-5 text-start p-3 lh-2">
                 <h2 class="mb-3">O que é uma finalidade de coleta?</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quisquam accusantium. Esse dolore
-                    soluta aliquam, praesentium voluptate vitae, maxime consectetur aspernatur adipisci eum delectus
-                    officia aliquid ab qui sapiente debitis.</p>
+                <p>
+                    A finalidade de coleta de dados é a razão específica pela qual uma organização ou sistema recolhe, armazena e
+                    processa informações pessoais. Ela define porquê os dados estão sendo coletados e como serão utilizados, garantindo
+                    transparência e conformidade com leis de proteção de dados, como a LGPD (Lei Geral de Proteção de Dados) no Brasil
+                    ou o GDPR (Regulamento Geral de Proteção de Dados) na Europa.
+                </p>
             </div>
             <div class="duvida col-lg-5 col-md-5 col-sm-5 text-end p-3 lh-2">
                 <h2 class="mb-3">Por que devo consentir a coleta de meus dados?</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga corporis voluptate veniam. Voluptate
-                    eius quia nemo non ipsum sit, praesentium nesciunt voluptates voluptatum expedita cum error adipisci
-                    unde asperiores dolores?</p>
+                <p>
+                    Consentir a coleta de dados garante proteção legal (LGPD/GDPR), controle sobre sua privacidade (com direito a revogar), 
+                    evita abusos como spam ou venda indevida, assegura segurança no armazenamento, oferece benefícios como personalização e 
+                    promoções, e promove transparência sobre a finalidade do uso, permitindo que você decida conscientemente quando e como 
+                    seus dados são utilizados.
+                </p>
             </div>
         </div>
     </main>

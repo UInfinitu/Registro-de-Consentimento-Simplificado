@@ -22,8 +22,12 @@ if (isset($_GET["id"])) { // Visualização de consentimentos de um único usuá
 } else { // Visualização de consentimentos de todos os usuários
 
     $sql = $pdo->prepare(
-        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade, c.dataConcessao
+        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade, c.dataConcessao, u.nomeUsuario
         FROM finalidade f
+        INNER JOIN consentimentos c
+            ON f.idFinalidade = c.finalidade_idFinalidade
+        INNER JOIN usuario u
+            ON u.idUsuario = c.usuario_idUsuario
         ORDER BY " . $ordem
     );
 }

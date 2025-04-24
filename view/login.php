@@ -14,7 +14,8 @@ $usuario = $sql->fetch();
 
 if ("admin@dponet.com" === $email && "1234" === $senha) {
     $_SESSION['nome'] = "Admin";
-    header("Location: admin.html");
+    $_SESSION['idSessao'] = session_id();
+    header("Location: admin.php");
     exit;
 } else if ($usuario) {
     if ($senha === $usuario['senhaUsuario']) {
@@ -22,6 +23,7 @@ if ("admin@dponet.com" === $email && "1234" === $senha) {
         $_SESSION['nome'] = $usuario['nomeUsuario'];
         $_SESSION['email'] = $usuario['emailUsuario'];
         $_SESSION['senha'] = $usuario['senhaUsuario'];
+        $_SESSION['idSessao'] = session_id();
         header("Location: cliente.php");
         exit;
     }
