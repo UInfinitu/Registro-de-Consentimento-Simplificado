@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS rcs.finalidade (
 CREATE TABLE IF NOT EXISTS rcs.consentimentos (
   usuario_idUsuario INT NOT NULL,
   finalidade_idFinalidade INT NOT NULL,
+  dataConcessao DATE NOT NULL,
   PRIMARY KEY (usuario_idUsuario, finalidade_idFinalidade),
   INDEX fk_usuario_has_finalidade_finalidade1_idx (finalidade_idFinalidade ASC) VISIBLE,
   INDEX fk_usuario_has_finalidade_usuario_idx (usuario_idUsuario ASC) VISIBLE,
@@ -53,8 +54,8 @@ INSERT INTO finalidade (nomeFinalidade, descFinalidade) VALUES
 ("Marketing por e-mail", "Consentimento para receber comunicações promocionais e newsletters por e-mail."),
 ("Compartilhamento de dados com terceiros", "Consentimento para compartilhar informações do usuário com parceiros ou outras empresas para fins específicos.");
 
-INSERT INTO consentimentos (usuario_idUsuario, finalidade_idFinalidade) VALUES
-(1, 1),
-(1, 2),
-(2, 1),
-(2, 2);
+INSERT INTO consentimentos (usuario_idUsuario, finalidade_idFinalidade, dataConcessao) VALUES
+(1, 1, "2025-04-23"),
+(1, 2, "2025-04-22"),
+(2, 1, "2025-03-02"),
+(2, 2, "2025-03-01");

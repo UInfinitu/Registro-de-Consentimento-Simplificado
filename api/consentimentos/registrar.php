@@ -6,11 +6,13 @@ include "../../conexao.php";
 
 $finalidade = htmlspecialchars($_GET["finalidade"]);
 $usuario = htmlspecialchars($_GET["usuario"]);
+$dataAtual = date('Y-m-d');
 
-$sql = $pdo->prepare("INSERT INTO consentimentos (usuario_idUsuario, finalidade_idFinalidade) VALUES (:usuario, :finalidade);");
+$sql = $pdo->prepare("INSERT INTO consentimentos (usuario_idUsuario, finalidade_idFinalidade, dataConcessao) VALUES (:usuario, :finalidade, :data);");
 
 $sql->bindParam(":usuario", $usuario);
 $sql->bindParam(":finalidade", $finalidade);
+$sql->bindParam(":data", $dataAtual);
 
 $resultado = $sql->execute();
 

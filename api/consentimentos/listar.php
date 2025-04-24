@@ -4,50 +4,29 @@ header('Content-Type: application/json');
 
 include "../../conexao.php";
 
+$ordem = isset($_GET["ordem"]) ? htmlspecialchars($_GET["ordem"]) : "";
+
 if (isset($_GET["id"])) { // Visualização de consentimentos de um único usuário
     $id = htmlspecialchars($_GET["id"]);
 
     $sql = $pdo->prepare(
-        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade
+        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade, c.dataConcessao
         FROM finalidade f
         INNER JOIN consentimentos c
             ON f.idFinalidade = c.finalidade_idFinalidade
-        WHERE c.usuario_idUsuario = :id;"
+        WHERE c.usuario_idUsuario = :id
+        ORDER BY " . $ordem
     );
 
     $sql->bindParam(":id", $id);
 } else { // Visualização de consentimentos de todos os usuários
 
     $sql = $pdo->prepare(
-        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade
-        FROM finalidade f;"
+        "SELECT f.nomeFinalidade, f.descFinalidade, f.idFinalidade, c.dataConcessao
+        FROM finalidade f
+        ORDER BY " . $ordem
     );
 }
-/* if (isset($_GET["busca"])) {
-    $sqlAscBusca->execute();
-    $sqlDescBusca->execute();
-    $sqlMaiorTaxaConsentimentoBusca->execute();
-    $sqlMenorTaxaConsentimentoBusca->execute();
-
-    $resultado = [
-        'crescente' => $sqlAscBusca->fetchAll(PDO::FETCH_ASSOC),
-        'decrescente' => $sqlDescBusca->fetchAll(PDO::FETCH_ASSOC),
-        'maior_taxa' => $sqlMaiorTaxaConsentimentoBusca->fetchAll(PDO::FETCH_ASSOC),
-        'menor_taxa' => $sqlMenorTaxaConsentimentoBusca->fetchAll(PDO::FETCH_ASSOC)
-    ];
-} else { 
-    $sqlAsc->execute();
-    $sqlDesc->execute();
-    $sqlMaiorTaxaConsentimento->execute();
-    $sqlMenorTaxaConsentimento->execute();
-
-    $resultado = [
-        'crescente' => $sqlAsc->fetchAll(PDO::FETCH_ASSOC),
-        'decrescente' => $sqlDesc->fetchAll(PDO::FETCH_ASSOC),
-        'maior_taxa' => $sqlMaiorTaxaConsentimento->fetchAll(PDO::FETCH_ASSOC),
-        'menor_taxa' => $sqlMenorTaxaConsentimento->fetchAll(PDO::FETCH_ASSOC)
-    ];
-} */
 
 $sql->execute();
 

@@ -1,0 +1,28 @@
+#navbar-vertical {
+    height: 100vh;
+    width: 20em;
+    position: fixed;
+    background-color: #076EA0;
+}
+
+#logo{
+    filter: brightness(100);
+}
+
+#logOut img{
+    filter: invert(1);
+    transform: scaleX(-1);
+    width: 3em;
+}
+
+#logOut span {
+    color: #FFFFFF;
+}
+
+#logOut:hover span{
+    text-decoration: underline;
+}
+
+main {
+    margin-left: 30rem;
+}

@@ -4,26 +4,82 @@ const id = document.getElementById('idUsuario').value;
 
 let listaAdicionarConsentimentos = [];
 
-
+// Execuções quando o site terminar de carregar
 window.addEventListener('load', async () => {
     consentimentos.classList.add('ativo');
 
-    listarConsentimentos("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id);
+    listarConsentimentos("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=f.nomeFinalidade");
 
     // Listar no modal
     listarFinalidades();
 });
 
+
+// Mudar a barra de navegação quando clica nos links
 historico.addEventListener('click', () => {
     consentimentos.classList.remove('ativo');
     historico.classList.add('ativo');
     document.getElementsByClassName('gradiente')[0].classList.add('mudar-gradiente');
+
+    document.getElementById('conteudo').innerHTML = `
+        <div class="table-responsive">
+            <table class="table w-100 mb-0 table-striped">
+                <thead>
+                    <tr>
+                        <th class="w-50">Finalidade</th>
+                        <th class="w-50">Data da concessão</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoHistorico">
+                    <!-- Seu conteúdo aqui -->
+                </tbody>
+            </table>
+        </div>
+    `;
+    preencherHistorico();
 });
+
+async function preencherHistorico() {
+    const corpoHistorico = document.getElementById('corpoHistorico');
+    const historicoConsentimentos = await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=c.dataConcessao");
+    const historicoJSON = await historicoConsentimentos.json();
+
+    historicoJSON.forEach((dado) => {
+        let tr = document.createElement('tr');
+
+        let consentimento = document.createElement('td');
+        consentimento.innerHTML = dado.nomeFinalidade;
+
+        let data = document.createElement('td');
+        data.innerHTML = dado.dataConcessao;
+
+        tr.appendChild(consentimento);
+        tr.appendChild(data);
+
+        corpoHistorico.appendChild(tr);
+    });
+}
 
 consentimentos.addEventListener('click', () => {
     consentimentos.classList.add('ativo');
     historico.classList.remove('ativo');
     document.getElementsByClassName('gradiente')[0].classList.remove('mudar-gradiente');
+
+    document.getElementById('conteudo').innerHTML = `
+    <div class="row justify-content-between align-items-center mb-3">
+        <div class="col-7">
+            <h4>Ordenar por</h4>
+            <button class="filtros btn btn-primary" data-order="crescente">A-Z</button>
+            <button class="filtros btn btn-primary" data-order="decrescente">Z-A</button>
+            <button class="filtros btn btn-primary" data-order="maior_taxa">Maior taxa de Consentimento</button>
+            <button class="filtros btn btn-primary" data-order="menor_taxa">Menor taxa de Consentimento</button>
+         </div>
+    </div>
+
+    <div id="consentimentos" class="row gy-3 justify-content-center">
+        <!-- Onde o JS vai gerar os consentimentos -->
+    </div>`;
+    listarConsentimentos("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=f.nomeFinalidade");
 });
 
 
@@ -59,10 +115,10 @@ document.querySelectorAll('.filtros').forEach(button => {
         const order = button.getAttribute('data-order');
         const listarConsentimentos = document.getElementById('consentimentos');
         const itens = Array.from(listarConsentimentos.getElementsByClassName('card'));
-        const listaContagem = await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id);
+        const listaContagem = await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=f.nomeFinalidade");
         const dadosContagem = await listaContagem.json();
 
-        listarConsentimentos.innerHTML = '<a href=# data-bs-toggle="modal" data-bs-target="#modalLogin" id="adicionarConsentimento" class="col-2 d-flex justify-content-center align-items-center mx-1"><p>+</p></a>';
+        listarConsentimentos.innerHTML = '<a href=# data-bs-toggle="modal" data-bs-target="#modalAdcConsentimento" id="adicionarConsentimento" class="col-2 d-flex justify-content-center align-items-center mx-1"><p>+</p></a>';
         if (order == 'crescente') {
             itens.sort((a, b) => a.textContent.localeCompare(b.textContent));
         } else if (order == 'decrescente') {
@@ -156,7 +212,7 @@ function listarConsentimentos(api) {
                         const id = document.getElementById('idUsuario').value;
                         await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/revogar.php?usuario=" + id + '&finalidade=' + consentimento.idFinalidade);
 
-                        listarConsentimentos(`http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=${id}`);
+                        listarConsentimentos("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=f.nomeFinalidade");
                         listarFinalidades();
                     });
                 });
@@ -174,10 +230,10 @@ function listarConsentimentos(api) {
 async function listarFinalidades() {
     const listaFinalidades = await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/finalidade-coleta/listar.php");
     const dadosFinalidades = await listaFinalidades.json();
-    const listaConsentimentos = await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id);
+    const listaConsentimentos = await fetch("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=f.nomeFinalidade");
     const dadosConsentimentos = await listaConsentimentos.json();
 
-    document.getElementsByClassName('modal-body')[0]. innerHTML = '';
+    document.getElementsByClassName('modal-body')[0].innerHTML = '';
     const resultados = document.createElement('div');
     resultados.id = 'todasFinalidades';
     resultados.className = 'row text-center p-3';
@@ -257,7 +313,7 @@ async function adicionarConsentimento() {
         listaAdicionarConsentimentos = [];
 
         listarFinalidades();
-        listarConsentimentos(`http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=${id}`);
+        listarConsentimentos("http://localhost/Registro-de-Consentimento-Simplificado/api/consentimentos/listar.php?id=" + id + "&ordem=f.nomeFinalidade");
     } catch (error) {
         console.error('Erro no processo:', error);
         alert('Ocorreu um erro ao processar os consentimentos');

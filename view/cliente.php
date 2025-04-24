@@ -95,7 +95,7 @@ $usuario = new Cliente($_SESSION['id'], $_SESSION["nome"]);
         </form>
 
         <!-- Parte de visualização dos consentimentos do usuário -->
-        <div id="meusConsentimentos" class="row col-9 mx-auto justify-content-center align-items-center mb-5 p-4">
+        <div id="conteudo" class="row col-9 mx-auto justify-content-center align-items-center mb-5 p-4">
             <!-- Filtros de ordenação e barra de busca -->
             <div class="row justify-content-between align-items-center mb-3">
                 <div class="col-7">
